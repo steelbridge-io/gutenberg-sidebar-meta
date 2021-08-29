@@ -25,7 +25,7 @@ let PluginMetaFields = (props) => {
 PluginMetaFields = withSelect(
 	(select) => {
 		return {
-			text_metafield: select('core/editor').getEditedPostAttribute('meta')['_sidebar_text_metafield']
+			text_metafield: select('core/editor').getEditedPostAttribute('meta')['_sidebar_vimeo_text_metafield']
 		}
 	}
 )(PluginMetaFields);
@@ -34,7 +34,7 @@ PluginMetaFields = withDispatch(
 	(dispatch) => {
 		return {
 			onMetaFieldChange: (value) => {
-				dispatch('core/editor').editPost({meta: {_sidebar_text_metafield: value}})
+				dispatch('core/editor').editPost({meta: {_sidebar_vimeo_text_metafield: value}})
 			}
 		}
 	}

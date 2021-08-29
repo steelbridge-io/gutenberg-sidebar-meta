@@ -170,7 +170,7 @@ let PluginMetaFields = props => {
 
 PluginMetaFields = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_5__.withSelect)(select => {
   return {
-    text_metafield: select('core/editor').getEditedPostAttribute('meta')['_sidebar_text_metafield']
+    text_metafield: select('core/editor').getEditedPostAttribute('meta')['_sidebar_vimeo_text_metafield']
   };
 })(PluginMetaFields);
 PluginMetaFields = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_5__.withDispatch)(dispatch => {
@@ -178,7 +178,7 @@ PluginMetaFields = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_5__.withDispatch)
     onMetaFieldChange: value => {
       dispatch('core/editor').editPost({
         meta: {
-          _sidebar_text_metafield: value
+          _sidebar_vimeo_text_metafield: value
         }
       });
     }
