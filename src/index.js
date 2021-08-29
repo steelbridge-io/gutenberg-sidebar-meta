@@ -1,5 +1,5 @@
 import { registerPlugin } from "@wordpress/plugins";
-import { PluginSidebar, PluginSidebarMoreMenuItem } from "@wordpress/edit-post";
+import { PluginSidebar, PluginSidebarMoreMenuItem, PluginDocumentSettingPanel } from "@wordpress/edit-post";
 import { __ } from "@wordpress/i18n";
 import { PanelBody, TextControl,  ColorPicker } from "@wordpress/components";
 import { withSelect, withDispatch } from "@wordpress/data";
@@ -8,8 +8,8 @@ let PluginMetaFields = (props) => {
 	return (
 		<>
 			<PanelBody
-				title={__("Meta Fields Panel", "textdomain")}
-				icon="admin-post"
+				title={__("Vimeo Video ID", "textdomain")}
+				icon="video-alt3"
 				intialOpen={ true }
 			>
 				<TextControl
@@ -41,11 +41,11 @@ PluginMetaFields = withDispatch(
 )(PluginMetaFields);
 
 registerPlugin( 'sidebar-sidebar', {
-	icon: 'coffee',
+	icon: 'video',
 	render: () => {
 		return (
 			<>
-				<PluginSidebarMoreMenuItem
+				{/*	<PluginSidebarMoreMenuItem
 					target="sidebar-sidebar"
 				>
 					{__('Meta Options', 'textdomain')}
@@ -55,7 +55,13 @@ registerPlugin( 'sidebar-sidebar', {
 					title={__('Meta Options', 'textdomain')}
 				>
 					<PluginMetaFields />
-				</PluginSidebar>
+				</PluginSidebar>*/ }
+				
+				<PluginDocumentSettingPanel
+					name="sidebar-sidebar"
+					title={__('Featured Video', 'textdomain')} >
+					<PluginMetaFields />
+				</PluginDocumentSettingPanel>
 			</>
 		)
 	}

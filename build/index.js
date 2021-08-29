@@ -158,8 +158,8 @@ __webpack_require__.r(__webpack_exports__);
 
 let PluginMetaFields = props => {
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Meta Fields Panel", "textdomain"),
-    icon: "admin-post",
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Vimeo Video ID", "textdomain"),
+    icon: "video-alt3",
     intialOpen: true
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextControl, {
     value: props.text_metafield,
@@ -185,13 +185,11 @@ PluginMetaFields = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_5__.withDispatch)
   };
 })(PluginMetaFields);
 (0,_wordpress_plugins__WEBPACK_IMPORTED_MODULE_1__.registerPlugin)('sidebar-sidebar', {
-  icon: 'coffee',
+  icon: 'video',
   render: () => {
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_2__.PluginSidebarMoreMenuItem, {
-      target: "sidebar-sidebar"
-    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Meta Options', 'textdomain')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_2__.PluginSidebar, {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_2__.PluginDocumentSettingPanel, {
       name: "sidebar-sidebar",
-      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Meta Options', 'textdomain')
+      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Featured Video', 'textdomain')
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PluginMetaFields, null)));
   }
 });
