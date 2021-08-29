@@ -10,13 +10,8 @@
 		exit;
 	}
 	
-	$tmp = get_page_template_slug(get_post('ID')); // provide page/post ID
-	if('page-interview.php' == $tmp) {
-		
-		
-		include 'meta-box.php';
-		
-	}
+		//include 'meta-box.php';
+	
 		function sidebar_enqueue_assets() {
 			$tmp = get_page_template_slug( get_post( 'ID' ) ); // provide page/post ID
 			if ( 'page-interview.php' == $tmp ) {
@@ -32,23 +27,19 @@
 		add_action( 'enqueue_block_editor_assets', 'sidebar_enqueue_assets' );
 		
 		function sidebar_register_meta() {
-			$tmp = get_page_template_slug( get_post( 'ID' ) ); // provide page/post ID
-			if ( 'page-interview.php' == $tmp ) {
-				
-				register_meta( 'post', '_sidebar_vimeo_text_metafield', array(
-					'show_in_rest'      => true,
-					'type'              => 'string',
-					'single'            => true,
-					'sanitize_callback' => 'sanitize_text_field',
-					'auth_callback'     => function () {
-						return current_user_can( 'edit_posts' );
-					}
-				) );
-			}
+			register_meta( 'post', '_sidebar_vimeo_text_metafield', array(
+				'show_in_rest'      => true,
+				'type'              => 'string',
+				'single'            => true,
+				'sanitize_callback' => 'sanitize_text_field',
+				'auth_callback'     => function () {
+					return current_user_can( 'edit_posts' );
+				}
+			) );
 		}
+	
 		
 		add_action( 'init', 'sidebar_register_meta' );
-		
 	
 	
 	

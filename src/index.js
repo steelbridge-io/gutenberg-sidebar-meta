@@ -17,6 +17,7 @@ let PluginMetaFields = (props) => {
 					label={__("Add Video ID", "textdomain")}
 					onChange={(value) => props.onMetaFieldChange(value)}
 				/>
+				
 			</PanelBody>
 		</>
 	)
