@@ -39,6 +39,7 @@
 		}
 		
 		add_action( 'init', 'sidebar_register_meta' );
+		
 	
 		function sidebar_register_meta_youtube() {
 			register_meta( 'post', '_sidebar_youtube_text_metafield', array(
