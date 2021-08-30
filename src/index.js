@@ -10,11 +10,11 @@ let PluginMetaFields = (props) => {
 			<PanelBody
 				title={__("Vimeo Video ID", "textdomain")}
 				icon="video-alt3"
-				intialOpen={ true }
+				intialOpen={ false }
 			>
 				<TextControl
 					value={props.text_metafield}
-					label={__("Add Video ID", "textdomain")}
+					label={__("Add Vimeo Video ID", "textdomain")}
 					onChange={(value) => props.onMetaFieldChange(value)}
 				/>
 				
@@ -41,27 +41,54 @@ PluginMetaFields = withDispatch(
 	}
 )(PluginMetaFields);
 
+
+let PluginMetaYoutube = (props) => {
+	return (
+		<>
+			<PanelBody
+				title={__("YouTube Video ID", "textdomain")}
+				icon="video-alt3"
+				intialOpen={ false }
+			>
+				<TextControl
+					value={props.text_metafield_youtube}
+					label={__("Add YouTube Video ID", "textdomain")}
+					onChange={(value) => props.onYouTubeFieldChange(value)}
+				/>
+			
+			</PanelBody>
+		</>
+	)
+}
+
+PluginMetaYoutube = withSelect(
+	(select) => {
+		return {
+			text_metafield_youtube: select('core/editor').getEditedPostAttribute('meta')['_sidebar_youtube_text_metafield']
+		}
+	}
+)(PluginMetaYoutube);
+
+PluginMetaYoutube = withDispatch(
+	(dispatch) => {
+		return {
+			onYouTubeFieldChange: (value) => {
+				dispatch('core/editor').editPost({meta: {_sidebar_youtube_text_metafield: value}})
+			}
+		}
+	}
+)(PluginMetaYoutube);
+
 registerPlugin( 'sidebar-sidebar', {
 	icon: 'video',
 	render: () => {
 		return (
 			<>
-				{/*	<PluginSidebarMoreMenuItem
-					target="sidebar-sidebar"
-				>
-					{__('Meta Options', 'textdomain')}
-				</PluginSidebarMoreMenuItem>
-				<PluginSidebar
-					name="sidebar-sidebar"
-					title={__('Meta Options', 'textdomain')}
-				>
-					<PluginMetaFields />
-				</PluginSidebar>*/ }
-				
 				<PluginDocumentSettingPanel
 					name="sidebar-sidebar"
 					title={__('Featured Video', 'textdomain')} >
 					<PluginMetaFields />
+					<PluginMetaYoutube />
 				</PluginDocumentSettingPanel>
 			</>
 		)

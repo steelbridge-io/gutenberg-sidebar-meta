@@ -160,10 +160,10 @@ let PluginMetaFields = props => {
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Vimeo Video ID", "textdomain"),
     icon: "video-alt3",
-    intialOpen: true
+    intialOpen: false
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextControl, {
     value: props.text_metafield,
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Add Video ID", "textdomain"),
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Add Vimeo Video ID", "textdomain"),
     onChange: value => props.onMetaFieldChange(value)
   })));
 };
@@ -184,13 +184,42 @@ PluginMetaFields = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_5__.withDispatch)
     }
   };
 })(PluginMetaFields);
+
+let PluginMetaYoutube = props => {
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("YouTube Video ID", "textdomain"),
+    icon: "video-alt3",
+    intialOpen: false
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextControl, {
+    value: props.text_metafield_youtube,
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Add YouTube Video ID", "textdomain"),
+    onChange: value => props.onYouTubeFieldChange(value)
+  })));
+};
+
+PluginMetaYoutube = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_5__.withSelect)(select => {
+  return {
+    text_metafield_youtube: select('core/editor').getEditedPostAttribute('meta')['_sidebar_youtube_text_metafield']
+  };
+})(PluginMetaYoutube);
+PluginMetaYoutube = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_5__.withDispatch)(dispatch => {
+  return {
+    onYouTubeFieldChange: value => {
+      dispatch('core/editor').editPost({
+        meta: {
+          _sidebar_youtube_text_metafield: value
+        }
+      });
+    }
+  };
+})(PluginMetaYoutube);
 (0,_wordpress_plugins__WEBPACK_IMPORTED_MODULE_1__.registerPlugin)('sidebar-sidebar', {
   icon: 'video',
   render: () => {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_2__.PluginDocumentSettingPanel, {
       name: "sidebar-sidebar",
       title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Featured Video', 'textdomain')
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PluginMetaFields, null)));
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PluginMetaFields, null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PluginMetaYoutube, null)));
   }
 });
 }();
